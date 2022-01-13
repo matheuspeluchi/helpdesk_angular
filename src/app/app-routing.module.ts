@@ -1,3 +1,4 @@
+import { TemplateComponent } from "./components/layout/template/template.component";
 import { ChamadoReadComponent } from "./components/chamado/chamado-read/chamado-read.component";
 import { ChamadoCreateComponent } from "./components/chamado/chamado-create/chamado-create.component";
 
@@ -23,7 +24,7 @@ const routes: Routes = [
   {
     path: "",
     canActivate: [AuthGuard],
-    component: NavComponent,
+    component: TemplateComponent,
     children: [
       { path: "home", component: HomeComponent },
 

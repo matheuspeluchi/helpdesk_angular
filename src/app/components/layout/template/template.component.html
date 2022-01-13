@@ -1,0 +1,13 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" color="primary" mode="side" [opened]="drawer$ | async">
+    <app-nav></app-nav>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <app-bar></app-bar>
+    <button class="menu mat-elevation-z8" (click)="drawer.toggle()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

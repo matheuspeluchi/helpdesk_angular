@@ -1,3 +1,4 @@
+import { appReducer } from "./store/app.state";
 import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -47,8 +48,11 @@ import { ClienteDeleteComponent } from "./components/cliente/cliente-delete/clie
 import { ChamadoListComponent } from "./components/chamado/chamado-list/chamado-list.component";
 import { ChamadoCreateComponent } from "./components/chamado/chamado-create/chamado-create.component";
 import { DestaqueDirective } from "./directives/destaque.directive";
-import { ChamadoUpdateComponent } from './components/chamado/chamado-update/chamado-update.component';
-import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-read.component';
+import { ChamadoUpdateComponent } from "./components/chamado/chamado-update/chamado-update.component";
+import { ChamadoReadComponent } from "./components/chamado/chamado-read/chamado-read.component";
+import { AppBarComponent } from "./components/layout/app-bar/app-bar.component";
+import { TemplateComponent } from "./components/layout/template/template.component";
+import { StoreModule } from "@ngrx/store";
 
 @NgModule({
   declarations: [
@@ -70,6 +74,8 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
     DestaqueDirective,
     ChamadoUpdateComponent,
     ChamadoReadComponent,
+    AppBarComponent,
+    TemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +108,7 @@ import { ChamadoReadComponent } from './components/chamado/chamado-read/chamado-
       progressBar: true,
     }),
     NgxMaskModule.forRoot(),
+    StoreModule.forRoot({ app: appReducer }),
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],

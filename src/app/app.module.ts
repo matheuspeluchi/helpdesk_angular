@@ -1,4 +1,4 @@
-import { appReducer } from "./store/app.state";
+import { appReducer } from "./store";
 import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -53,6 +53,8 @@ import { ChamadoReadComponent } from "./components/chamado/chamado-read/chamado-
 import { AppBarComponent } from "./components/layout/app-bar/app-bar.component";
 import { TemplateComponent } from "./components/layout/template/template.component";
 import { StoreModule } from "@ngrx/store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -109,6 +111,7 @@ import { StoreModule } from "@ngrx/store";
     }),
     NgxMaskModule.forRoot(),
     StoreModule.forRoot({ app: appReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],

@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { IAppState } from "./../../../store/IAppState";
+import { IAppState } from "../../../store/AppState";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "./../../../services/auth.service";
 import { Router } from "@angular/router";

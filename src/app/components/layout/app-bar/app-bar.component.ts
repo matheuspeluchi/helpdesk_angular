@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngrx/store";
-import { toggle } from "src/app/store/app.state";
-import { IAppState } from "src/app/store/IAppState";
+import { toggleMenu } from "src/app/store";
+import { IAppState } from "src/app/store/AppState";
 
 @Component({
   selector: "app-bar",
@@ -13,7 +13,7 @@ export class AppBarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  toggleMenu() {
-    this.store.dispatch(toggle());
+  toggle() {
+    this.store.dispatch(toggleMenu());
   }
 }

@@ -1,4 +1,5 @@
-export interface IAppState {
+import { User } from "./../models/user";
+export interface AppState {
   drawer: boolean;
-  user: {};
+  user: User;
 }

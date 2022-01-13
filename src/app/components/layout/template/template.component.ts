@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { IAppState } from "../../../store/AppState";
+import { AppState } from "../../../store/AppState";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "./../../../services/auth.service";
 import { Router } from "@angular/router";
@@ -13,7 +13,7 @@ import { map } from "rxjs/operators";
   styleUrls: ["./template.component.css"],
 })
 export class TemplateComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService, private alert: ToastrService, private store: Store<{ app: IAppState }>) {}
+  constructor(private router: Router, private authService: AuthService, private alert: ToastrService, private store: Store<{ app: AppState }>) {}
 
   drawer$: Observable<boolean> = this.store.select("app").pipe(map((e) => e.drawer));
 

@@ -1,6 +1,6 @@
-import { IAppState } from "./AppState";
+import { AppState } from "./AppState";
 
-const INITIAL_STATE: IAppState = {
+const INITIAL_STATE: AppState = {
   drawer: true,
   user: null,
 };

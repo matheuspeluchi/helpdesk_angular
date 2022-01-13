@@ -1,3 +1,17 @@
-export const set = (property) => (state, payload) => (state[property] = payload);
+import { AppState } from "./AppState";
 
-export const toggle = (property) => (state) => (state[property] = !state[property]);
+export const set = function (property) {
+  return function (state: AppState, payload) {
+    let newState = { ...state };
+    newState[property] = payload;
+    return newState;
+  };
+};
+
+export const toggle = function (property) {
+  return function (state: AppState) {
+    let newState = { ...state };
+    newState[property] = !state[property];
+    return newState;
+  };
+};

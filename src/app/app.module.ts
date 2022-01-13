@@ -55,6 +55,8 @@ import { TemplateComponent } from "./components/layout/template/template.compone
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
+import { AvatarModule } from "ngx-avatar";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
@@ -104,6 +106,7 @@ import { environment } from "../environments/environment";
     MatIconModule,
     MatListModule,
     MatCardModule,
+    AvatarModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,

@@ -1,4 +1,3 @@
-import { appReducer } from "./store";
 import { AuthInterceptorProvider } from "./interceptors/auth.interceptor";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -56,7 +55,7 @@ import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import { AvatarModule } from "ngx-avatar";
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { appReducer } from "./store/reducers";
 
 @NgModule({
   declarations: [
@@ -114,7 +113,10 @@ import { JwtHelperService } from "@auth0/angular-jwt";
     }),
     NgxMaskModule.forRoot(),
     StoreModule.forRoot({ app: appReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent],

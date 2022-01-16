@@ -1,31 +1,30 @@
-import { API_CONFIG } from './../config/api.config';
-import { Credenciais } from 'src/app/models/credenciais';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from "./../../environments/environment";
+import { Credenciais } from "src/app/models/credenciais";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { JwtHelperService } from "@auth0/angular-jwt";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
-
   jwtService: JwtHelperService = new JwtHelperService();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   authenticate(user: Credenciais) {
-    return this.http.post(`${API_CONFIG.baseUrl}/login`, user, {
-      observe: 'response',
-      responseType: "text"
-    })
+    return this.http.post(`${environment.baseUrl}/login`, user, {
+      observe: "response",
+      responseType: "text",
+    });
   }
 
   successfullLogin(token: string) {
-     localStorage.setItem("Authorization", token)      
+    localStorage.setItem("Authorization", token);
   }
 
   isAuthenticated(): boolean {
-    let token = localStorage.getItem("Authorization")
+    let token = localStorage.getItem("Authorization");
     if (token !== null) {
       return !this.jwtService.isTokenExpired(token);
     }

@@ -1,34 +1,32 @@
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { API_CONFIG } from '../config/api.config';
-import { Tecnico } from '../models/tecnico';
+import { environment } from "./../../environments/environment";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Tecnico } from "../models/tecnico";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TecnicoService {
+  constructor(private http: HttpClient) {}
 
-  
-  constructor(private http: HttpClient) { }
-  
-  listar():Observable<Tecnico[]> {
-    return this.http.get<Tecnico[]>(`${API_CONFIG.baseUrl}/tecnicos`)
+  listar(): Observable<Tecnico[]> {
+    return this.http.get<Tecnico[]>(`${environment.baseUrl}/tecnicos`);
   }
-  
+
   cadastrar(tecnico: Tecnico): Observable<Tecnico> {
-    return this.http.post<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos`, tecnico);
+    return this.http.post<Tecnico>(`${environment.baseUrl}/tecnicos`, tecnico);
   }
-  
+
   obterPorId(id: any): Observable<Tecnico> {
-    return this.http.get<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${id}`)
+    return this.http.get<Tecnico>(`${environment.baseUrl}/tecnicos/${id}`);
   }
-  
+
   update(tecnico: Tecnico): Observable<Tecnico> {
-    return this.http.put<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${tecnico.id}`, tecnico)    
+    return this.http.put<Tecnico>(`${environment.baseUrl}/tecnicos/${tecnico.id}`, tecnico);
   }
 
   delete(id: any) {
-    return this.http.delete<Tecnico>(`${API_CONFIG.baseUrl}/tecnicos/${id}`)
+    return this.http.delete<Tecnico>(`${environment.baseUrl}/tecnicos/${id}`);
   }
 }
